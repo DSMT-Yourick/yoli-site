@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>E-mailadres bevestigd – Yoli</title>
+  <link rel="icon" href="img/favicon.png">
+  <link rel="stylesheet" href="stijl.css">
+</head>
+<body>
+  <header class="kop">
+    <div class="wrap">
+      <a class="merk" href="./"><img src="img/yoli-icoon.svg" alt="">Yoli</a>
+      <nav class="nav"><a href="support.html">Support</a></nav>
+    </div>
+  </header>
+
+  <!-- Where the links in Yoli's mails land (Supabase → Authentication → URL Configuration → Site URL).
+       Supabase puts the outcome in the address after "#": an error, or a session that this page
+       ignores on purpose. The app signs in itself. -->
+  <main class="midden">
+    <div class="kaart" id="goed">
+      <img src="img/yoli-icoon-256.png" alt="">
+      <h1 style="font-size: 1.9rem">Gelukt</h1>
+      <p>Je e-mailadres is bevestigd. Open de Yoli-app op je iPad en meld je aan.</p>
+      <p class="muted">Start je een nieuw kantoor, dan krijg je toegang zodra Yoli het heeft goedgekeurd.</p>
+    </div>
+    <div class="kaart" id="fout" hidden>
+      <img src="img/yoli-icoon-256.png" alt="">
+      <h1 style="font-size: 1.9rem">Deze link werkt niet meer</h1>
+      <p>De link is al gebruikt of verlopen. Dat gebeurt soms omdat een mailprogramma links op voorhand opent.</p>
+      <p class="muted">Geen probleem: vul in de app de <b>code uit dezelfde mail</b> in. Of vraag in de app een nieuwe mail aan.</p>
+      <p><a class="knop licht" href="support.html">Hulp nodig?</a></p>
+    </div>
+  </main>
+  <script>
+    // Never keep tokens in the address bar or the history.
+    const deel = new URLSearchParams(location.hash.slice(1) || location.search.slice(1));
+    if (deel.get('error') || deel.get('error_code')) {
+      document.getElementById('goed').hidden = true;
+      document.getElementById('fout').hidden = false;
+    }
+    if (location.hash || location.search) history.replaceState(null, '', location.pathname);
+  </script>
+</body>
+</html>
