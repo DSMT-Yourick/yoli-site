@@ -144,6 +144,7 @@ details p { margin: 12px 0 0; color: var(--grijs); }
 .voet .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
 .voet a { color: var(--grijs); }
 .voet nav { display: flex; flex-wrap: wrap; gap: 18px; }
+.voet .gegevens { display: inline-block; margin-top: 4px; font-size: .85rem; }
 
 /* Centered message (account confirmed) */
 .midden { min-height: calc(100vh - 68px); display: grid; place-items: center; padding: 40px 20px; }
